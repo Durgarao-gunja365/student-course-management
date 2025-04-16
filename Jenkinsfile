@@ -45,5 +45,13 @@ pipeline {
                 }
             }
         }
+          stage('Run Migrations') {
+            steps {
+                script {
+                    // Run migration inside the web container
+                    sh 'docker-compose exec web python manage.py migrate'
+                }
+            }
+        }
     }
 }
