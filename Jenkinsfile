@@ -35,8 +35,8 @@ pipeline {
         stage('Deploy Container') {
             steps {
                 script {
-                    sh 'docker rm -f student-course-app || true'
-                    sh 'docker run -d --name student-course-app -p 8000:8000 $DOCKER_IMAGE'
+                    sh 'docker-compose down || true'
+            sh 'docker-compose up -d --build'
                 }
             }
         }

@@ -96,7 +96,9 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME', 'studentdb'),
         'USER': os.environ.get('DB_USER', 'studentuser'),
         'PASSWORD': os.environ.get('DB_PASSWORD', 'studentpass'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
+
+
+        'HOST': os.environ.get('DB_HOST', 'db'),  # ✅ not localhost!
         'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
