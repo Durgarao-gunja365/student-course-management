@@ -4,6 +4,10 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'durgarao365/student-course-management'
 
+         DJANGO_SUPERUSER_USERNAME = 'admin'
+        DJANGO_SUPERUSER_EMAIL = 'admin@example.com'
+        DJANGO_SUPERUSER_PASSWORD = 'admin123'
+
     }
 
     stages {
@@ -50,6 +54,24 @@ pipeline {
                 script {
                     // Run migration inside the web container
                     sh 'docker-compose exec web python manage.py migrate'
+                }
+            }
+        }
+
+        stage('Create Superuser') {
+            steps {
+                script {
+                    // Export environment vars and create superuser
+                    sh '''
+                        docker-compose exec -e DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME} \
+                                             -e DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL} \
+                                             -e DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD} \
+                            web python manage.py shell -c "
+from django.contrib.auth import get_user_model;
+User = get_user_model();
+if not User.objects.filter(username='${DJANGO_SUPERUSER_USERNAME}').exists():
+    User.objects.create_superuser('${DJANGO_SUPERUSER_USERNAME}', '${DJANGO_SUPERUSER_EMAIL}', '${DJANGO_SUPERUSER_PASSWORD}')"
+                    '''
                 }
             }
         }
