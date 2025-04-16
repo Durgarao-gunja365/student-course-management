@@ -1,0 +1,283 @@
+{% extends 'index.html' %}
+
+{% block 'body' %}
+<style>
+    body {
+        background: linear-gradient(90deg, #0e3959 0%, #0e3959 30%, #03a9f5 30%, #03a9f5 30%);
+        font-family: 'Poppins', sans-serif;
+         margin: 0;
+    }
+
+    .contactUs {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        padding-bottom: 20px;
+        margin:0px;
+    }
+
+    .contactUs .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        color: #fff;
+        font-weight: 500;
+        margin:0px;
+    }
+
+    .box {
+        position: relative;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 5fr 4fr;
+        grid-template-areas: "form info" "form map";
+        max-width: 1200px;
+        grid-gap: 20px;
+        margin-top: 20px;
+         margin: auto;
+    }
+
+    .contact {
+        padding: 10px;
+        background: #fff;
+        box-shadow: 0 5px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact h3 {
+        color: #0e3959;
+        font-weight: 500;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+    .form{
+    grid-area: form;
+    }
+     .info{
+    grid-area: info;
+    }
+     .map{
+    grid-area: map;
+    }
+    .formBox {
+        position: relative;
+        width: 100%;
+    }
+
+    .formBox .row50 {
+        display: flex;
+        gap: 20px;
+    }
+
+    .inputBox {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        width: 50%;
+    }
+
+    .formBox .row100 .inputBox {
+        width: 100%;
+    }
+
+    .inputBox span {
+        color: #18b7ff;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    .inputBox input,
+    .inputBox textarea {
+        padding: 10px;
+        font-size: 1.1em;
+        outline: none;
+        border: 1px solid #333;
+
+    }
+
+    .inputBox input[type="submit"] {
+        background-color: #03a9f5;
+        color: #fff;
+        border: none;
+        font-size: 1.1em;
+        max-width: 120px;
+       font-weight: 500;
+       cursor: pointer;
+       padding: 14px 15px;
+
+    }
+
+    .inputBox input[type="submit"]:hover {
+        background-color: #0184c7;
+    }
+    .info{
+    background:#0e3959;
+    }
+    .info h3{
+    color:#fff;
+    }
+    .info .infoBox div{
+
+    align-items:center;
+    display:flex;
+    margin-bottom:10px;
+    }
+    .info .infoBox div span{
+    min-width:40px;
+    height:40px;
+    color:#fff;
+    background:#18b7ff;
+    justify-content:center;
+    display:flex;
+    align-items:center;
+    font-size:1.5em;
+    border-radius:50%;
+    margin-right:15px;
+    }
+    .info .infoBox div p{
+    color:#fff;
+    font-size:1.1em;
+    }
+    .info .infoBox div a{
+    color:#fff;
+    text-decoration:none;
+    font-size:1.1em;
+    }
+    .sci{
+    margin-top:40px;
+    display:flex;
+    }
+    .sci li{
+    list-style:none;
+    margin-right:15px;
+    }
+    .sci li a{
+    color:#fff
+    font-size:2em;
+    color:#ccc;
+    }
+    .sci li a:hover{
+    color:#fff;
+    font-size:2em
+    }
+    .map{
+    padding:0;
+    }
+    .map iframe{
+    width:100%;
+    height:100%;
+    }
+    @media(max-width:991px{
+    body{
+          background:#03a9f5;
+        }
+    .contactUs
+    {
+      padding:20px;
+    }
+    .box{
+    position:relative;
+    dispaly:grid:
+    grid-template-columns:1fr;
+    grid-template-rows:auto:
+    grid-template-areas:
+    "form"
+    "info"
+    "map";
+    }
+    .map{
+    min-height:300px;
+    }
+    .formBox .row50{
+    display:flew;
+    gap:0;
+    flex-direction:column;
+    }
+    .inputBox{
+
+     width:100%;
+    }
+    }
+</style>
+</head>
+<body>
+<h2 align="center" style="color:fullgreen">{{message}}</h2>
+    <div class="contactUs">
+        <div class="title">
+            <h2>Get in Touch</h2>
+        </div>
+        <div class="box">
+            <div class="contact form">
+                <h3>Send a Message</h3>
+<form method="post" action="{% url 'mails' %}">
+    {% csrf_token %}
+                    <div class="formBox">
+                        <div class="row50">
+                            <div class="inputBox">
+                                <span>First Name</span>
+                                <input type="text" name="fn" placeholder="John">
+                            </div>
+                            <div class="inputBox">
+                                <span>Last Name</span>
+                                <input type="text"  name="ln" placeholder="Dea">
+                            </div>
+                        </div>
+                        <div class="row50">
+                            <div class="inputBox">
+                                <span>Email</span>
+                                <input type="text" name="email" placeholder="Durga@gmail.com">
+                            </div>
+                            <div class="inputBox">
+                                <span>Mobile</span>
+                                <input type="text" name="mob" placeholder="+91 760 107 1268">
+                            </div>
+                        </div>
+                        <div class="row100">
+                            <div class="inputBox">
+                                <span>Message</span>
+                                <textarea type="text" name="msg"  placeholder="Write your message here..."></textarea>
+                            </div>
+                        </div>
+                        <div class="row100">
+                            <div class="inputBox">
+                                <input type="submit" value="Send">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="contact info">
+                <h3>Contact Info</h3>
+                <div class="infoBox">
+                    <div>
+                        <span><ion-icon name="location-outline"></ion-icon></span>
+                        <p>Kl University, Vijayawada <br>India</br></p>
+                    </div>
+                     <div>
+                        <span><ion-icon name="mail-outline"></ion-icon></span>
+                        <a href="mailto:kluniversity@gmail.com">kluniversity@gmail.com</a>
+                    </div>
+                     <div>
+                        <span><ion-icon name="call-outline"></ion-icon></span>
+                        <a href="tel:+917601071268">+91 760 107 1268</a>
+                    </div>
+                    <ul class="sci">
+                        <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a> </li>
+                         <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a> </li>
+                         <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a> </li>
+                         <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contact map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15305.745056806381!2d80.6215802!3d16.45343285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1712514738830!5m2!1sen!2sin" " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+        </div>
+    </div>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+{% endblock %}
+</html>

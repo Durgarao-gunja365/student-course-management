@@ -1,0 +1,92 @@
+{% extends 'studenthome.html'%}
+{% block 'body'%}
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        width: 25%;
+        height:20%;
+        margin: 0 auto;
+        background-color: #f4f4f4; /* Background color for the form */
+        padding: 20px; /* Padding for the form content */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    select,
+    input[type="number"],
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<h2 align="right" style="color: red">{{msg}}</h2>
+
+<h2 align="center" style="color: red;background-color:black;"><u>Select Academic Year and Semister </u></h2>
+
+<br>
+
+<form method="post" action="{%url 'displaystudentcourses'%}">
+{% csrf_token %}
+    <table align="center" width="80%" height="60%">
+
+
+            <td><label>Select Academic Year</label></td>
+            <td>
+                <select name="ay" required>
+                    <option value="">--Select--</option>
+                    <option value="2023-24">2023-24</option>
+                    <option value="2022-23">2022-23</option>
+                </select>
+            </td>
+        </tr>
+        <tr align="center">
+            <td><label>Select Semester</label></td>
+            <td>
+                <select name="sem" required>
+                    <option value="">--Select--</option>
+                    <option value="odd">ODD SEM</option>
+                    <option value="even">EVEN SEM</option>
+                </select>
+            </td>
+        </tr>
+
+
+
+
+        <tr align="center">
+            <td><input type="submit" value="Add" class="addbutton"></td>
+            <td><input type="reset" value="Clear" class="addbutton"></td>
+        </tr>
+
+    </table>
+
+</form>
+{%endblock%}

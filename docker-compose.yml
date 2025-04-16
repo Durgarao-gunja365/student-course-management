@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: studentdb
+      POSTGRES_USER: studentuser
+      POSTGRES_PASSWORD: studentpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - studentnet
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_NAME: studentdb
+      DB_USER: studentuser
+      DB_PASSWORD: studentpass
+      DB_HOST: db
+      DB_PORT: 5432
+    networks:
+      - studentnet
+
+volumes:
+  postgres_data:
+
+networks:
+  studentnet:

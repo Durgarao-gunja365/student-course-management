@@ -1,0 +1,134 @@
+{% extends 'adminhome.html'%}
+{% block 'body'%}
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 20%; /* Adjust the width as needed */
+    font-size: 16px;
+    padding: 10px; /* Adjust the padding as needed */
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+     float: right;
+  }
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: center;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 113px;
+            left: 0;
+            background-color:#AED581;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            padding: 10px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .content {
+            margin-left: 200px;
+            padding: 0;
+        }
+    .background-image-example {
+    background-image: url('media/media/about.jpg');
+    background-size: cover; /* This ensures the image covers the entire element */
+    background-position: center; /* This centers the image within the element */
+    height: 300px; /* Adjust the height as needed */
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+
+<center>Menu...</center>
+<a href="{%url 'addcourse'%}">Add course</a>
+<a href="{%url 'viewcourses'%}">View All Courses</a>
+<a href="{%url 'deletecourse'%}">Delete course</a>
+  <a href="{%url 'updatecourse'%}">Update course</a>
+    </div>
+
+<h3 align="center"><u>Update course</u></h3>
+<b style="margin-left:200px; color:red;">total count: {{count}}</b>
+<input class="form-control" id="myInput" type="text" placeholder="Course Title" ><br>
+<table align="center" border="2" class="table table-striped" width="86%" height="10%"  backdrop-filter: blur(10px); style="margin-left:200px;">
+
+
+     <thead align="center" bgcolor="orange">
+         <td>ID</td>
+         <td>Program</td>
+         <td>Department</td>
+          <td>Academic Year</td>
+          <td>semester</td>
+          <td>Year</td>
+          <td>Course Code</td>
+          <td>Course Title</td>
+          <td>Action</td>
+     </thead>
+    <tbody  id="myTable">
+    {%for i in courselist%}
+    <tr align="center">
+          <td>{{i.id}}</td>
+        <td>{{i.program}}</td>
+        <td>{{i.department}}</td>
+        <td>{{i.academicyear}}</td>
+        <td>{{i.semester}}</td>
+        <td>{{i.year}}</td>
+        <td>{{i.coursecode}}</td>
+        <td>{{i.coursetitle}}</td>
+      <td><a href="courseupdate/{{i.id}}">Update</a></td>
+
+
+
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+{% endblock %}

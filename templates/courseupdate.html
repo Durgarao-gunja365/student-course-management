@@ -1,0 +1,153 @@
+{% extends 'adminhome.html'%}
+{% block 'body'%}
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        width: 40%;
+        margin: 0 auto;
+        background-color: #f4f4f4; /* Background color for the form */
+        padding: 20px; /* Padding for the form content */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    select,
+    input[type="number"],
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<h2 align="center" style="color: red">{{msg}}</h2>
+
+<h3 align="center"><u>Update Course</u></h3>
+
+<br>
+
+<form method="post" action="{%url 'updatecourse_by_id'%}">
+{% csrf_token %}
+    <table align="center" width="80%" height="50%">
+         <tr align="center">
+            <td><label>Course ID</label></td>
+            <td>
+                <input type="number" name="cid" value="{{cid}}" readonly>
+            </td>
+        </tr>
+         <tr align="center">
+            <td><label>Select Program</label></td>
+            <td>
+                <select name="program" required>
+                    <option value="">--Select--</option>
+                    <option value="B.Tech.">B.Tech.</option>
+                    <option value="M.Tech.">M.Tech.</option>
+                </select>
+            </td>
+        </tr><tr align="center">
+            <td><label>Select Department</label></td>
+            <td>
+                <select name="dept" required>
+                    <option value="">--Select--</option>
+                    <option value="CSE(H)">CSE(HONORS)</option>
+                    <option value="CSE(R)">CSE(REGULARS)</option>
+                    <option value="CSIT">CS&IT</option>
+                </select>
+            </td>
+        </tr>
+       <tr align="center">
+            <td><label>Select Academic Year</label></td>
+            <td>
+                <select name="ay" required>
+                    <option value="">--Select--</option>
+                    <option value="2023-24">2023-24</option>
+                    <option value="2022-23">2022-23</option>
+                </select>
+            </td>
+        </tr>
+        <tr align="center">
+            <td><label>Select Semester</label></td>
+            <td>
+                <select name="sem" required>
+                    <option value="">--Select--</option>
+                    <option value="odd">ODD SEM</option>
+                    <option value="even">EVEN SEM</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr align="center">
+            <td><label>Select Year</label></td>
+            <td>
+                <select name="year" required>
+                    <option value="">--Select--</option>
+                    <option value="1">1st</option>
+                    <option value="2">2nd</option>
+                    <option value="3">3rd</option>
+                     <option value="4">4th</option>
+                </select>
+            </td>
+        </tr>
+
+         <tr align="center">
+            <td><label>Enter Course Code</label></td>
+            <td>
+                <input type="text" name="ccode" required placeholder="21CS2001">
+            </td>
+        </tr>
+
+         <tr align="center">
+            <td><label>Enter Course Title</label></td>
+            <td>
+                <input type="text" name="ctitle" required>
+            </td>
+        </tr><tr align="center">
+            <td><label>Enter LTPS</label></td>
+            <td>
+                <input type="text" name="ltps" required placeholder="x-x-x-x">
+            </td>
+        </tr>
+        <tr align="center">
+            <td><label>Enter Credits</label></td>
+            <td>
+                <input type="text" name="credits" required>
+            </td>
+        </tr>
+
+
+
+        <tr align="center">
+            <td><input type="submit" value="Update" class="addbutton"></td>
+            <td><input type="reset" value="Clear" class="addbutton"></td>
+        </tr>
+
+    </table>
+
+</form>
+{%endblock%}

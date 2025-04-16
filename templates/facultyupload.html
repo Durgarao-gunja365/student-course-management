@@ -1,0 +1,83 @@
+{% extends 'facultyhome.html'%}
+{% load static %}
+{% block 'body'%}
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+                        background-image: url('{% static "images/colorful-wallpaper-background-multicolored-generative-ai.jpg" %}'); /* Replace with the path to your background image */
+            background-size: cover;  /* Adjust the background size */
+            background-repeat: no-repeat;  /* Prevent background image from repeating */
+            background-attachment: fixed;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #101010;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        form input[type="text"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form button[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        form button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+<body>
+<h2 align="center" style="color: red">{{msg}}</h2>
+<div class="form-container">
+  <h2 style="color:red">Add Course Content</h2>
+  <body>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Content</button>
+    </form>
+</body>
+
+
+{% endblock%}
+

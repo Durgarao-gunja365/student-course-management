@@ -1,0 +1,311 @@
+{% extends 'index.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<t>
+{% block 'body'%}
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:#2a52be;
+}
+
+    .card-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+    margin-top:100px;
+    padding:10px;
+    }
+.card{
+    width:325px;
+    background-color:#f4f4f4;
+    border-radius:10px;
+    box-shadaw:0px 2px 4px rgba(0,0,0,0.3);
+    overflow:hidden;
+    transition:transform 0.6s ease;
+    }
+    .card:hover{
+    transform: translateY(-20px);
+    }
+    .card img{
+    width:100%;
+    height:auto;
+    object-fit:cover;
+    }
+    .card-content{
+    padding:20px;
+    }
+    .card-content h1{
+    font-size:24px;
+    margin-bottom:10px;
+    }
+    .card-content p{
+    font-size:24px;
+    color:#666;
+    margin-bottom:10px;
+    }
+    .card-button{
+    display:inline-block;
+    background-color:#349;
+    color:#fff;
+    text-decoration:none;
+    border-radius:5px;
+    padding:6px
+    }
+    .hero{
+    background-color:#fdf5e6;
+    overflow:hidden;
+    }
+    .hero1{
+    background-color:#f0ffff;
+    overflow:hidden;
+    }
+    .hero2{
+    background-color:#f5f5dc;
+    overflow:hidden;
+    }
+    .heading h1{
+    color:#ff6347;
+    font-size:55px;
+    text-align:center;
+    margin-top:35px;
+    }
+    .container{
+    display:flex;
+    justify-content:center;
+    align-item:center;
+    width:90%;
+    margin:65px auto;
+    }
+    .hero-content h2{
+    font-size:38px;
+    margin-bottom:20px;
+    color:#333;
+    }
+    .hero-content p{
+    font-size:24px;
+    line-height:1.5;
+    margin-bottom: 40 px;
+    color:#666;
+    }
+    .hero1-content p{
+    font-size:24px;
+    line-height:1.5;
+    margin-bottom: 40 px;
+    color:#fff;
+    }
+    .hero-content button{
+    display:inline-block;
+    background-color:#ff6347;
+    color:#fff;
+    padding:12px 24px;
+    border-radius:5px;
+    font-size:20px;
+    border:none;
+    cursor:pointer;
+    transition:0.3s ease;
+    }
+    .hero-content{
+    flex:1;
+    width:600px;
+    margin:0px 25px;
+    animation:fadeInUp 2s ease;
+    }
+    .hero-content button:hover{
+    background-color:#ff6347;
+    transform:scale(1.1);
+    }
+    .hero-image{
+    flex:1;
+    width:600px;
+    margin:auto;
+    animation:fadeInRight 2s ease;
+    }
+    @media screen and (max-width:768px){
+     .heading h1{
+     font-size:45px:
+     margin-top:30px;
+     }
+     .hero{
+     margin:0px;
+     }
+     .container{
+     width:100%;
+     flex-direction:column;
+     margin:0px;
+     padding:0px 40px;
+     }
+     .hero-content{
+     width:100%;
+     margin:35px 0px;
+     }
+     .hero-content h2{
+     font-size:30px;
+     }
+     .hero-content p{
+     font-size:18px;
+     margin-bottom:20px;
+     }
+     .hero-content button{
+     font-size:16px;
+     padding:8px 16px;
+     }
+     .hero-image{
+     width:100%;
+
+     }
+
+
+    }
+    img{
+    width:100%;
+    height:auto;
+    border-radius:10px;
+    }
+    @keyframes fadeInUp{
+    0%{
+      opacity:0;
+      transform:translateY(50px);
+    }
+    100%{
+       opacity:1;
+       transform:translateY(0px);
+    }
+    }
+    @keyframes fadeInRight{
+    0%{
+      opacity:0;
+      transform:translateX(-50px);
+    }
+    100%{
+       opacity:1;
+       transform:translateX(0px);
+    }
+    }
+</style>
+    <section class="hero">
+        <div class="heading">
+            <h1> About Project</h1>
+        </div>
+        <div class="container">
+        <div class="hero-content">
+            <h2> Admin Role </h2>
+            <p>In this project , the admin plays a crucial role in overseeing user  management by creating, updating, and deleting user profiles and managing roles and permissions. They also handle data management tasks such as managing student and faculty data, course and curriculum management including course schedules and faculty assignments, attendance monitoring and reporting, grades and transcripts management, financial aspects like fee collection and scholarship management, communication within the system, system configuration and maintenance for smooth functioning, reporting and analytics for decision-making, and ensuring security measures and data privacy compliance.</p>
+        <button class="cta-button"> learn more</button>
+        </div>
+            <div class="hero-image">
+                <img src="media/media/admin_photo.jpeg">
+            </div>
+        </div>
+    </section>
+     <section class="hero1">
+        <div class="heading">
+
+        </div>
+        <div class="container">
+        <div class="hero-content">
+            <h2> Faculty Role</h2>
+
+<p> Faculty members in this project primarily focus on teaching and academic activities. Their roles include creating and delivering course materials, conducting lectures, grading assignments and exams, providing feedback to students, managing course schedules, organizing academic events, mentoring students, collaborating with other faculty members and administrators, participating in curriculum development and updates, conducting research, and contributing to the overall academic quality and growth of the institution.</p>
+
+
+
+
+
+
+
+        <button class="cta-button"> learn more</button>
+        </div>
+            <div class="hero-image">
+                <img src="media/media/faculty.jpeg">
+            </div>
+        </div>
+    </section>
+     <section class="hero2">
+        <div class="heading">
+
+        </div>
+        <div class="container">
+        <div class="hero-content">
+            <h2> Student Role </h2>
+
+            <p>Students in this project are primarily focused on their academic journey. Their roles include accessing course materials, attending lectures and discussions, submitting assignments and projects, taking exams, receiving feedback from faculty, participating in extracurricular activities, managing their schedules and academic progress, interacting with faculty and peers, accessing academic support services, and actively engaging in learning to achieve their educational goals.
+
+
+
+
+
+
+</p>
+        <button class="cta-button"> learn more</button>
+        </div>
+            <div class="hero-image">
+    <img src="media/media/about2.jpg" alt="About Image">
+</div>
+
+        </div>
+    </section>
+    <footer>
+<h2 style="text-align:center; color:#fff; font-size:35px;">Our Team Members</h2>
+
+
+
+<div class="card-container">
+  <div class="card">
+
+      <img src="media/media/durga_chair.jpg" alt="Avatar" style="width:300px;height:300px;">
+    <div class="card-content">
+      <h1>GUNJA DURGA RAO</h1>
+      <p>B-TECH(STUDENT)</p>
+      <p>We love that guy</p>
+         <a href="#" style="margin-right: 20px;"><ion-icon name="logo-facebook"></ion-icon></a>
+<a href="#" style="margin-right: 20px;"><ion-icon name="logo-twitter"></ion-icon></a>
+<a href="#" style="margin-right: 20px;"><ion-icon name="logo-linkedin"></ion-icon></a>
+<a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+        <a href="" class="card-button">Read more</a>
+    </div>
+  </div>
+     <div class="card">
+
+      <img src="media/media/sameer.jpg" alt="Avatar" style="width:300px;height:300px;">
+    <div class="card-content">
+      <h1>Sameer</h1>
+      <p>B-TECH(STUDENT)</p>
+      <p>We love that guy</p>
+        <a href="#" style="margin-right: 20px;"><ion-icon name="logo-facebook"></ion-icon></a>
+<a href="#" style="margin-right: 20px;"><ion-icon name="logo-twitter"></ion-icon></a>
+<a href="#" style="margin-right: 20px;"><ion-icon name="logo-linkedin"></ion-icon></a>
+<a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+    </div>
+  </div>
+     <div class="card">
+
+      <img src="media/media/mani.jpg" alt="Avatar" style="width:300px;height:300px;">
+    <div class="card-content">
+      <h1>Mani</h1>
+      <p>B-TECH(STUDENT)</p>
+      <p>We love that guy</p>
+        <a href="#" style="margin-right: 20px;"><ion-icon name="logo-facebook"></ion-icon></a>
+<a href="#" style="margin-right: 20px;"><ion-icon name="logo-twitter"></ion-icon></a>
+<a href="#" style="margin-right: 20px;"><ion-icon name="logo-linkedin"></ion-icon></a>
+<a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+
+
+    </div>
+  </div>
+</div>
+</footer>
+
+
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+{% endblock %}
+</body>
+</html>

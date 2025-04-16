@@ -1,0 +1,30 @@
+{% extends "razorpay_home.html"%}
+{%load static%}
+{% block 'body'%}
+<style>
+     body {
+        background-color: #f0f0f0; /* Example color */
+    }
+    button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+   margin-top: 10px;
+}
+</style>
+<center>
+<img src="media/media/Success-PNG-Image.png" alt="My Image"style="width: 100px; height: 100px;">
+
+`
+    <h2  style="color: green; font-family: Arial, sans-serif; ">Thanks, your payment has been completed</h2>
+
+   <a href="{% url 'razor_index' %}"><button type="submit">Pay Again</button></a>
+
+</center>
+
+{% endblock %}
+

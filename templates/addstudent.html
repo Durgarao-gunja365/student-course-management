@@ -1,0 +1,108 @@
+{% extends 'adminhome.html' %}
+{%load static%}
+{% block 'body' %}
+<style>
+    input[type="submit"],
+    input[type="reset"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+        background-color: #45a049;
+    }
+
+    /* Styling for the blurred background */
+    body {
+            background-image: url('{% static "images/admin.jpg" %}'); /* Replace with the path to your background image */
+        background-size: cover;
+        background-position: center;
+        height: 100vh; /* Ensure the background covers the entire viewport height */
+        overflow: hidden; /* Hide the background overflow */
+        align-items: center;
+                justify-content: center;
+
+    }
+
+    .form-container {
+        backdrop-filter: blur(10px); /* Adjust the blur strength as needed */
+        background-color: rgba(255, 255, 255, 0.5); /* Adjust the background color and opacity as needed */
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        width: 40%; /* Adjust the width of the form container */
+        margin: auto;
+        margin-top: 1%;
+    }
+
+    table {
+        width: 20%;
+    }
+</style>
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 113px;
+            left: 0;
+            background-color:#AED581;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            padding: 10px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .content {
+            margin-left: 200px;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2 align="center">Menu..</h2>
+
+       <a href="{%url 'addstudent'%}">Add Student</a>
+      <a href="{%url 'viewstudent'%}">View All Student</a>
+      <a href="{%url 'deletestudent'%}">Delete Student</a>
+        <a href="{% url 'updatestudent'%}">Update Student</a>
+    </div>
+
+<center>
+    <div class="form-container">
+        <h2> <u>Add Student</u> </h2>
+        <h2 align="center" style="color: red">{{msg}}</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {% for i in form %}
+                <tr>
+                    <td><label>{{i.label}}</label></td>
+                    <td>{{i}}</td>
+                </tr>
+                {% endfor %}
+
+                <td><input type="reset" value="Clear" class="addbutton"></td>
+                <td><input type="submit" value="Add" class="addbutton"></td>
+            </table>
+        </form>
+    </div>
+</center>
+{% endblock %}

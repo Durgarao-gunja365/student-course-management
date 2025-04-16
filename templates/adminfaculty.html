@@ -1,0 +1,47 @@
+{% extends 'adminhome.html'%}
+{%load static %}
+{% block 'body'%}
+
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 113px;
+            left: 0;
+            background-color:#AED581;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            padding: 10px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .content {
+            margin-left: 200px;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+<h2 align="center">Menu..</h2>
+     <a href="{%url 'addfaculty'%}">Add Faculty</a>
+  <a href="{%url 'viewfaculty'%}">View All Faculty</a>
+  <a href="{%url 'deletefaculty'%}">Delete Faculty</a>
+  <a href="{%url 'updatefaculty'%}">Update Faculty</a>
+    </div>
+
+
+{% endblock %}
+
