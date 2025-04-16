@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'durgarao365/student-course-management'
-        DOCKER_CREDENTIALS_ID = 'dockerhub'
+
     }
 
     stages {
@@ -21,15 +21,16 @@ pipeline {
             }
         }
 
-        stage('Push to DockerHub') {
+         stage('Push to DockerHub') {
             steps {
-                script {
-                    docker.withRegistry('', dockerhub) {
-                        sh 'docker push $DOCKER_IMAGE'
-                    }
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+                    sh 'docker push $DOCKER_IMAGE'
+                    sh 'docker logout'
                 }
             }
         }
+
 
         stage('Deploy Container') {
             steps {
