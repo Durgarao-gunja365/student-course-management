@@ -35,8 +35,13 @@ pipeline {
         stage('Deploy Container') {
             steps {
                 script {
+                   // Free up port 8000 if it's already in use
+                    sh 'docker ps -q --filter "publish=8000" | xargs -r docker stop || true'
+                    sh 'docker ps -aq --filter "publish=8000" | xargs -r docker rm || true'
+
+                    // Take down old containers and start new ones
                     sh 'docker-compose down || true'
-            sh 'docker-compose up -d --build'
+                    sh 'docker-compose up -d --build'
                 }
             }
         }
