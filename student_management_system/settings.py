@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'adminapp',
     'facultyapp',
     'studentapp',
+     'django_prometheus',
 
 ]
 
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
      'django_auto_logout.middleware.auto_logout',
+     'django_prometheus.middleware.PrometheusAfterMiddleware',
 
 ]
 

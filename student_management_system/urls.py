@@ -36,7 +36,8 @@ urlpatterns = [
     path('facultylogin/', views.facultylogin, name='facultylogin'),
      path('mails',views.mails,name='mails'),
     path('',include('facultyapp.urls')),
-   path('',include('studentapp.urls'))
+   path('',include('studentapp.urls')),
+    path('', include('django_prometheus.urls')),
 
 
 ] #+ static(settings.MEDIA_URL,document_root =settings.MEDIA_ROOT)
