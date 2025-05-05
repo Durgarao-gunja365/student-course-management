@@ -72,13 +72,3 @@ def mails(request):
 
 
 
-class ExportToDjangoView(View):
-    def get(self, request, *args, **kwargs):
-        """
-        Prometheus metrics endpoint.
-        """
-        # Generate the latest metrics
-        metrics = generate_latest()
-        
-        # Return the metrics with the correct content type for Prometheus
-        return HttpResponse(metrics, content_type=CONTENT_TYPE_LATEST)

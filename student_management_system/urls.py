@@ -21,7 +21,7 @@ from django.urls import path, include
 #from django.conf import settings
 #from django.conf.urls.static import static
 from . import views
-from .views import ExportToDjangoView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,7 +38,7 @@ urlpatterns = [
      path('mails',views.mails,name='mails'),
     path('',include('facultyapp.urls')),
    path('',include('studentapp.urls')),
-path('metrics/', ExportToDjangoView.as_view(), name='metrics'),
+ path('', include('django_prometheus.urls')),
 
 
 ] #+ static(settings.MEDIA_URL,document_root =settings.MEDIA_ROOT)
