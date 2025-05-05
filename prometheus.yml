@@ -12,4 +12,4 @@ scrape_configs:
 
   - job_name: "student_course_management"
     static_configs:
-      - targets: ["tudent-course-management-pipeline-web-1:8000"]
+      - targets: ["web:8000"]
