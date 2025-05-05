@@ -35,12 +35,15 @@ EMAIL_HOST_PASSWORD ='ymft jmoq vnsx xqpz'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django_prometheus',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,11 +53,12 @@ INSTALLED_APPS = [
     'adminapp',
     'facultyapp',
     'studentapp',
-     'django_prometheus',
+
 
 ]
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -63,7 +67,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
      'django_auto_logout.middleware.auto_logout',
-      'django_prometheus.middleware.PrometheusBeforeMiddleware',
+      
        'django_prometheus.middleware.PrometheusAfterMiddleware',
 
 ]
