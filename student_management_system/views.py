@@ -4,6 +4,11 @@ from django.shortcuts import render,redirect
 from adminapp.models import Student,faculty,Course,contactus
 from django.core.mail import send_mail
 from django.conf import settings
+
+from django.views import View
+from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
+
+
 def demo(request):
     student_count = Student.objects.count()
     faculty_count = faculty.objects.count()
@@ -64,3 +69,16 @@ def mails(request):
         return render(request,'contact.html',{'message':msg})
     else:
         HttpResponse('Invalid request')
+
+
+
+class ExportToDjangoView(View):
+    def get(self, request, *args, **kwargs):
+        """
+        Prometheus metrics endpoint.
+        """
+        # Generate the latest metrics
+        metrics = generate_latest()
+        
+        # Return the metrics with the correct content type for Prometheus
+        return HttpResponse(metrics, content_type=CONTENT_TYPE_LATEST)
