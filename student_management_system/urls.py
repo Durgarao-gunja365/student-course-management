@@ -38,7 +38,7 @@ urlpatterns = [
      path('mails',views.mails,name='mails'),
     path('',include('facultyapp.urls')),
    path('',include('studentapp.urls')),
- path('metrics/', views.ExportToDjangoView, name='prometheus-metrics'),
+ path('metrics/', views.ExportToDjangoView, name='metrics'),
 
 
 ] #+ static(settings.MEDIA_URL,document_root =settings.MEDIA_ROOT)
