@@ -37,7 +37,7 @@ This project demonstrates a full DevOps pipeline: building and deploying a Djang
 
 ```bash
 git clone https://github.com/Durgarao-gunja365/student-course-management.git
-cd your-repo
+cd student-course-management
 ```
 
 ### 2. Build Docker Image (optional step if running standalone)
